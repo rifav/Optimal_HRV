@@ -42,7 +42,7 @@ class HomePage extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 Navigator.push<void>(
-                    context, MaterialPageRoute(builder: (_) => Menu()));
+                    context, MaterialPageRoute(builder: (_) => const Menu()));
               },
               style: ButtonStyle(
                   backgroundColor:

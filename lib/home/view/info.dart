@@ -6,7 +6,7 @@ import 'package:optimal_hrv_bloc/app/app.dart';
 import 'package:optimal_hrv_bloc/home/widgets/widgets.dart';
 import 'package:optimal_hrv_bloc/theme.dart';
 
-class Page3 extends StatelessWidget {
+class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -14,7 +14,7 @@ class Page3 extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Welcome'),
+        title: const Text('Profile'),
         backgroundColor: theme.primaryColor,
         actions: <Widget>[
           IconButton(
@@ -39,24 +39,4 @@ class Page3 extends StatelessWidget {
       ),
     );
   }
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     appBar: AppBar(
-  //       centerTitle: true,
-  //       title: const Text('User info'),
-  //       backgroundColor: theme.primaryColor,
-  //       automaticallyImplyLeading: false,
-  //     ),
-  //     body: Column(
-  //       children: [
-  //         Container(
-  //           alignment: Alignment.center,
-  //           margin: const EdgeInsets.only(top: 150),
-  //           child: const Text(
-  //               'More information about the user will be added here.'),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
 }

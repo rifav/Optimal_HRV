@@ -1,10 +1,13 @@
-// ignore_for_file: unnecessary_import,, always_use_package_imports,,, prefer_if_elements_to_conditional_expressions, prefer_const_constructors, prefer_interpolation_to_compose_strings, prefer_single_quotes, type_annotate_public_apis, always_declare_return_types, sized_box_for_whitespace, lines_longer_than_80_chars, use_key_in_widget_constructors, sort_constructors_first
+// ignore_for_file: unnecessary_import,, always_use_package_imports,,, prefer_if_elements_to_conditional_expressions, prefer_const_constructors, prefer_interpolation_to_compose_strings, prefer_single_quotes, type_annotate_public_apis, always_declare_return_types, sized_box_for_whitespace, lines_longer_than_80_chars, use_key_in_widget_constructors, sort_constructors_first, unused_local_variable, avoid_void_async, cascade_invocations, avoid_dynamic_calls, unnecessary_statements, prefer_final_locals, omit_local_variable_types
 
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
+
 import 'package:optimal_hrv_bloc/home/view/menu.dart';
 import 'package:optimal_hrv_bloc/theme.dart';
 
@@ -47,6 +50,35 @@ class PPGPage extends StatefulWidget {
 
 int _bpm = 0;
 
+void postDetailsToFirestore() async {
+  // //calling firestore
+  // //calling user model
+  // //sending these values
+  final _auth = firebase_auth.FirebaseAuth.instance;
+  // // ignore: omit_local_variable_types
+  // final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+  final userModel = _auth.currentUser;
+
+  // const userReading = User;
+
+  // userReading.id = user!.id;
+  // userReading.email = user.email;
+  // userReading.value = _bpm.toInt();
+
+  // await firebaseFirestore
+  //     .collection('users')
+  //     .doc(user.id)
+  //     .set(userReading.toMap());
+
+  Map<String, dynamic> data = <String, dynamic>{
+    'uid': userModel!.uid,
+    'email': userModel.email,
+    'value': _bpm.toInt(),
+  };
+  await FirebaseFirestore.instance.collection("readings").add(data);
+}
+
 class PPGPageView extends State<PPGPage> {
   List<SensorValue> data = [];
   //  Widget chart = BPMChart(data);
@@ -75,6 +107,7 @@ class PPGPageView extends State<PPGPage> {
           _bpm = currentValue;
           _timer!.cancel();
           isBPMEnabled = false;
+          postDetailsToFirestore();
           Navigator.push<void>(
               context,
               MaterialPageRoute(
