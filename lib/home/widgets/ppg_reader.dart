@@ -7,6 +7,8 @@ import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:optimal_hrv_bloc/app/bloc/app_bloc.dart';
 
 import 'package:optimal_hrv_bloc/home/view/menu.dart';
 import 'package:optimal_hrv_bloc/theme.dart';
@@ -257,18 +259,27 @@ class Page1 extends StatelessWidget {
         centerTitle: true,
         title: const Text('Dashboard'),
         backgroundColor: theme.primaryColor,
+        // ignore: unnecessary_parenthesis
+        leading: (IconButton(
+          icon: const Icon(
+            Icons.add_circle_rounded,
+            color: Colors.white,
+          ), // top left button (+)
+
+          onPressed: () {
+            Navigator.of(
+                    context) // when button is pressed -> open camera (goes to CameraAppTest class)
+                .push<void>(MaterialPageRoute(
+                    builder: (context) => const CameraAppTest()));
+          },
+        )),
         actions: [
           IconButton(
-            icon: const Icon(
-              Icons.add_circle_rounded,
-              color: Colors.white,
-            ), // top right button (+)
-            onPressed: () {
-              Navigator.of(
-                      context) // when button is pressed -> open camera (goes to CameraAppTest class)
-                  .push<void>(MaterialPageRoute(
-                      builder: (context) => const CameraAppTest()));
-            },
+            // Logout iconButton
+
+            key: const Key('homePage_logout_iconButton'),
+            icon: const Icon(Icons.exit_to_app),
+            onPressed: () => context.read<AppBloc>().add(AppLogoutRequested()),
           )
         ],
         automaticallyImplyLeading: false,

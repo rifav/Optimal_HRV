@@ -22,7 +22,7 @@ class _MenuState extends State<Menu> {
     Page2(), // Data Trends
     Page1(), //PPG reader
     FeedbackPage(), //biofeedback
-    Profile(), // user profile
+    ProfileView(), // user profile
   ];
 
   @override
