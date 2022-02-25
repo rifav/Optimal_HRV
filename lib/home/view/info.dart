@@ -47,7 +47,7 @@ class ProfileView extends StatelessWidget {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: _appBar(),
-      body: _profilePage(),
+      body: SingleChildScrollView(child: _profilePage()),
     );
   }
 
