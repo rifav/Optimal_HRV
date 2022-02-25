@@ -72,6 +72,7 @@ class ProfileView extends StatelessWidget {
             _emailTitle(),
             _genderTitle(),
             _dobTitle(),
+            _saveProfileChangesButton(),
           ],
         ),
       ),
@@ -130,6 +131,13 @@ class ProfileView extends StatelessWidget {
         onPressed: () => currentDate,
       ),
       title: Text('Date of Birth'),
+    );
+  }
+
+  Widget _saveProfileChangesButton() {
+    return ElevatedButton(
+      onPressed: () {},
+      child: Text('Save Changes'),
     );
   }
 
