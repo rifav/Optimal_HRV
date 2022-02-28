@@ -3,7 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:optimal_hrv_bloc/home/view/biofeedback.dart';
-import 'package:optimal_hrv_bloc/home/view/data.dart';
+import 'package:optimal_hrv_bloc/home/view/homeMenu.dart';
 import 'package:optimal_hrv_bloc/home/view/education.dart';
 import 'package:optimal_hrv_bloc/home/view/info.dart';
 import 'package:optimal_hrv_bloc/home/widgets/widgets.dart';
@@ -16,11 +16,11 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
-  int _currentIndex = 2;
+  int _currentIndex = 0;
   final screens = [
-    EducationPage(), // Education
+    //EducationPage(), // Education
     Page2(), // Data Trends
-    Page1(), //PPG reader
+    Page1(), //PPG reader aka Dashboard
     FeedbackPage(), //biofeedback
     ProfileView(), // user profile
   ];
@@ -37,26 +37,29 @@ class _MenuState extends State<Menu> {
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,
         items: const [
-          BottomNavigationBarItem(
+          /*BottomNavigationBarItem(
             icon: Icon(Icons.show_chart, color: Color(0xFF0087a1), size: 25),
             label: '',
             backgroundColor: Colors.white,
-          ),
+          ),*/
           BottomNavigationBarItem(
-              icon: Icon(Icons.bar_chart, color: Color(0xFF0087a1)),
+              icon: Icon(Icons.home,  size: 30,
+                  color: Color(0xFF0087a1)),
               label: '',
               backgroundColor: Colors.white),
           BottomNavigationBarItem(
-              icon: Icon(Icons.favorite_border,
-                  size: 40, color: Color(0xFF0087a1)),
+              icon: Icon(Icons.favorite,
+                  size: 30, color: Color(0xFF0087a1)),
               label: '',
               backgroundColor: Colors.white),
           BottomNavigationBarItem(
-              icon: Icon(Icons.people, color: Color(0xFF0087a1)),
+              icon: Icon(Icons.auto_graph,  size: 30,
+                  color: Color(0xFF0087a1)),
               label: '',
               backgroundColor: Colors.white),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person, color: Color(0xFF0087a1)),
+              icon: Icon(Icons.person,  size: 30,
+                  color: Color(0xFF0087a1)),
               label: '',
               backgroundColor: Colors.white)
         ],
