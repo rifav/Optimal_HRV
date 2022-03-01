@@ -10,7 +10,7 @@ class EducationPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text('Education'),
+          title: const Text('Podcast & Books'),
           backgroundColor: theme.primaryColor,
           automaticallyImplyLeading: false,
           bottom: const TabBar(
