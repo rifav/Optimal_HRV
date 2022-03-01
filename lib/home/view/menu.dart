@@ -4,7 +4,6 @@
 import 'package:flutter/material.dart';
 import 'package:optimal_hrv_bloc/home/view/biofeedback.dart';
 import 'package:optimal_hrv_bloc/home/view/homeMenu.dart';
-import 'package:optimal_hrv_bloc/home/view/education.dart';
 import 'package:optimal_hrv_bloc/home/view/info.dart';
 import 'package:optimal_hrv_bloc/home/widgets/widgets.dart';
 
@@ -43,23 +42,19 @@ class _MenuState extends State<Menu> {
             backgroundColor: Colors.white,
           ),*/
           BottomNavigationBarItem(
-              icon: Icon(Icons.home,  size: 30,
-                  color: Color(0xFF0087a1)),
+              icon: Icon(Icons.home, size: 30, color: Color(0xFF0087a1)),
               label: '',
               backgroundColor: Colors.white),
           BottomNavigationBarItem(
-              icon: Icon(Icons.favorite,
-                  size: 30, color: Color(0xFF0087a1)),
+              icon: Icon(Icons.favorite, size: 30, color: Color(0xFF0087a1)),
               label: '',
               backgroundColor: Colors.white),
           BottomNavigationBarItem(
-              icon: Icon(Icons.auto_graph,  size: 30,
-                  color: Color(0xFF0087a1)),
+              icon: Icon(Icons.auto_graph, size: 30, color: Color(0xFF0087a1)),
               label: '',
               backgroundColor: Colors.white),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person,  size: 30,
-                  color: Color(0xFF0087a1)),
+              icon: Icon(Icons.person, size: 30, color: Color(0xFF0087a1)),
               label: '',
               backgroundColor: Colors.white)
         ],

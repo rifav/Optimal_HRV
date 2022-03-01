@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors
+// ignore_for_file: use_key_in_widget_constructors, file_names, avoid_unnecessary_containers, lines_longer_than_80_chars, prefer_const_constructors, unnecessary_const
 
 import 'package:flutter/material.dart';
 import 'package:optimal_hrv_bloc/home/home.dart';
@@ -17,216 +17,266 @@ class Page2 extends StatelessWidget {
         backgroundColor: theme.primaryColor,
         automaticallyImplyLeading: false,
       ),
-
       body: Center(
-        child: SingleChildScrollView(
+          child: SingleChildScrollView(
         child: Container(
-              child: Column(
-                children: [
-                  const SizedBox(height: 12),
-                  // Take HRV Reading
-                  Ink(
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
-                        color: Colors.white, border: Border.all( color: const Color(0xFFEEEEEE), width: 2,)
-                    ),
-                    height: 65, width: 325,
-                    padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-                    child: InkWell(
-                      onTap: (){
-                        //Navigator.pop(context, true);
-                        Navigator.of(
+            child: Column(
+          children: [
+            const SizedBox(height: 12),
+            // Take HRV Reading
+            Ink(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                    border: Border.all(
+                      color: const Color(0xFFEEEEEE),
+                      width: 2,
+                    )),
+                height: 65,
+                width: 325,
+                padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                child: InkWell(
+                  onTap: () {
+                    //Navigator.pop(context, true);
+                    Navigator.of(
                             context) // when button is pressed -> open camera (goes to CameraAppTest class)
-                            .push<void>(MaterialPageRoute(
+                        .push<void>(MaterialPageRoute(
                             builder: (context) => const Page1()));
-                      },
-
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        Text('Take HRV Reading', style: const TextStyle(fontWeight: FontWeight.bold)),
-                        Align(
-                          child: Icon(Icons.favorite, color: Colors.lightGreen,
-                          )
-                        )
-                      ],
-                    ),
-                    )
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: const [
+                      Text('Take HRV Reading',
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
+                      Align(
+                          child: Icon(
+                        Icons.favorite,
+                        color: Colors.lightGreen,
+                      ))
+                    ],
                   ),
-                  const SizedBox(height: 12),
-                  // Onboarding Tasks
-                  Ink(
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
-                        color: Colors.white, border: Border.all( color: const Color(0xFFEEEEEE), width: 2,)
-                    ),
-                    height: 65, width: 325,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        Text('Onboarding Tasks', style: const TextStyle(fontWeight: FontWeight.bold)),
-                        Align(
-                            child: Icon(Icons.format_list_bulleted, color: const Color(0xFFEF9A9A),
-                            )
-                        )
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  // Mindfulness
-                  Ink(
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
-                        color: Colors.white, border: Border.all( color: const Color(0xFFEEEEEE), width: 2,)
-                    ),
-                    height: 65, width: 325,
-                    padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        Text('Mindfulness', style: const TextStyle(fontWeight: FontWeight.bold)),
-                        Align( // wb_incandescent
-                            child: Icon(Icons.lightbulb, color: const Color(0xFFEF9A9A),
-                            )
-                        )
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  // Biofeedback
-                  Ink(
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
-                        color: Colors.white, border: Border.all( color: const Color(0xFFEEEEEE), width: 2,)
-                    ),
-                    height: 65, width: 325,
-                    padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-                      child: InkWell(
-                        onTap: (){
-                          //Navigator.pop(context, true);
-                          Navigator.of(
-                              context) // when button is pressed -> open camera (goes to CameraAppTest class)
-                              .push<void>(MaterialPageRoute(
-                              builder: (context) => FeedbackPage()));
-                        },
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: const [
-                            Text('Biofeedback', style: const TextStyle(fontWeight: FontWeight.bold)),
-                            Align(
-                                child: Icon(Icons.auto_graph, color: const Color(0xFFEF9A9A),
-                                )
-                            )
-                          ],
-                        ),
-                      )
-                  ),
-
-                  const SizedBox(height: 12),
-                  // Podcast & Books
-                  Ink(
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
-                        color: Colors.white, border: Border.all( color: const Color(0xFFEEEEEE), width: 2,)
-                    ),
-                    height: 65, width: 325,
-                    padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-                      child: InkWell(
-                        onTap: (){
-                          //Navigator.pop(context, true);
-                          Navigator.of(
-                              context) // when button is pressed -> open camera (goes to CameraAppTest class)
-                              .push<void>(MaterialPageRoute(
-                              builder: (context) =>  EducationPage()));
-                        },
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: const [
-                            Text('Podcast & Books', style: const TextStyle(fontWeight: FontWeight.bold)),
-                            Align(
-                                child: Icon(Icons.podcasts, color: const Color(0xFF1565C0),
-                                )
-                            )
-                          ],
-                        ),
-                      )
-                  ),
-
-                  const SizedBox(height: 12),
-                  // Data Definitions
-                  Ink(
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
-                        color: Colors.white, border: Border.all( color: const Color(0xFFEEEEEE), width: 2,)
-                    ),
-                    height: 65, width: 325,
-                    padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-                    child: InkWell(
-                      onTap: (){
-                        //Navigator.pop(context, true);
-                        Navigator.of(
-                            context) // when button is pressed -> open camera (goes to CameraAppTest class)
-                            .push<void>(MaterialPageRoute(
-                            builder: (context) =>  Definitions()));
-                      },
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        Text('Data Definitions', style: const TextStyle(fontWeight: FontWeight.bold)),
-                        Align(
-                            child: Icon(Icons.assignment, color: const Color(0xFF7B1FA2),
-                            )
-                        )
-                      ],
-                    ),
-                  ),
-                  ),
-                  const SizedBox(height: 12),
-                  // Videos
-                  Ink(
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
-                        color: Colors.white, border: Border.all( color: const Color(0xFFEEEEEE), width: 2,)
-                    ),
-                    height: 65, width: 325,
-                    padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        Text('YouTube Videos', style: const TextStyle(fontWeight: FontWeight.bold)),
-                        Align(
-                            child: Icon(Icons.videocam, color: Color(0xFFEF5350),
-                            )
-                        )
-                      ],
-                    ),
-                  ),
-
-                  const SizedBox(height: 12),
-                  // Set Reminders
-                  Ink(
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
-                        color: Colors.white, border: Border.all( color: const Color(0xFFEEEEEE), width: 2,)
-                    ),
-                    height: 65, width: 325,
-                    padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        Text('Set Reminders', style: const TextStyle(fontWeight: FontWeight.bold)),
-                        Align(
-                            child: Icon(Icons.watch_later_outlined, color: Color(0xFFEF5350),
-                            )
-                        )
-                      ],
-                    ),
-                  ),
+                )),
+            const SizedBox(height: 12),
+            // Onboarding Tasks
+            Ink(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                  border: Border.all(
+                    color: const Color(0xFFEEEEEE),
+                    width: 2,
+                  )),
+              height: 65,
+              width: 325,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  Text('Onboarding Tasks',
+                      style: const TextStyle(fontWeight: FontWeight.bold)),
+                  Align(
+                      child: Icon(
+                    Icons.format_list_bulleted,
+                    color: const Color(0xFFEF9A9A),
+                  ))
                 ],
-              )
-                  ),
-        )
               ),
-          );
+            ),
+            const SizedBox(height: 12),
+            // Mindfulness
+            Ink(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                  border: Border.all(
+                    color: const Color(0xFFEEEEEE),
+                    width: 2,
+                  )),
+              height: 65,
+              width: 325,
+              padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  Text('Mindfulness',
+                      style: const TextStyle(fontWeight: FontWeight.bold)),
+                  Align(
+                      // wb_incandescent
+                      child: Icon(
+                    Icons.lightbulb,
+                    color: const Color(0xFFEF9A9A),
+                  ))
+                ],
+              ),
+            ),
+            const SizedBox(height: 12),
+            // Biofeedback
+            Ink(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                    border: Border.all(
+                      color: const Color(0xFFEEEEEE),
+                      width: 2,
+                    )),
+                height: 65,
+                width: 325,
+                padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                child: InkWell(
+                  onTap: () {
+                    //Navigator.pop(context, true);
+                    Navigator.of(
+                            context) // when button is pressed -> open camera (goes to CameraAppTest class)
+                        .push<void>(MaterialPageRoute(
+                            builder: (context) => FeedbackPage()));
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: const [
+                      Text('Biofeedback',
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
+                      Align(
+                          child: Icon(
+                        Icons.auto_graph,
+                        color: const Color(0xFFEF9A9A),
+                      ))
+                    ],
+                  ),
+                )),
+
+            const SizedBox(height: 12),
+            // Podcast & Books
+            Ink(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                    border: Border.all(
+                      color: const Color(0xFFEEEEEE),
+                      width: 2,
+                    )),
+                height: 65,
+                width: 325,
+                padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                child: InkWell(
+                  onTap: () {
+                    //Navigator.pop(context, true);
+                    Navigator.of(
+                            context) // when button is pressed -> open camera (goes to CameraAppTest class)
+                        .push<void>(MaterialPageRoute(
+                            builder: (context) => EducationPage()));
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: const [
+                      Text('Podcast & Books',
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
+                      Align(
+                          child: Icon(
+                        Icons.podcasts,
+                        color: const Color(0xFF1565C0),
+                      ))
+                    ],
+                  ),
+                )),
+
+            const SizedBox(height: 12),
+            // Data Definitions
+            Ink(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                  border: Border.all(
+                    color: const Color(0xFFEEEEEE),
+                    width: 2,
+                  )),
+              height: 65,
+              width: 325,
+              padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+              child: InkWell(
+                onTap: () {
+                  //Navigator.pop(context, true);
+                  Navigator.of(
+                          context) // when button is pressed -> open camera (goes to CameraAppTest class)
+                      .push<void>(MaterialPageRoute(
+                          builder: (context) => Definitions()));
+                },
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: const [
+                    Text('Data Definitions',
+                        style: const TextStyle(fontWeight: FontWeight.bold)),
+                    Align(
+                        child: Icon(
+                      Icons.assignment,
+                      color: const Color(0xFF7B1FA2),
+                    ))
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 12),
+            // Videos
+            Ink(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                  border: Border.all(
+                    color: const Color(0xFFEEEEEE),
+                    width: 2,
+                  )),
+              height: 65,
+              width: 325,
+              padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  Text('YouTube Videos',
+                      style: const TextStyle(fontWeight: FontWeight.bold)),
+                  Align(
+                      child: Icon(
+                    Icons.videocam,
+                    color: Color(0xFFEF5350),
+                  ))
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 12),
+            // Set Reminders
+            Ink(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                  border: Border.all(
+                    color: const Color(0xFFEEEEEE),
+                    width: 2,
+                  )),
+              height: 65,
+              width: 325,
+              padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  Text('Set Reminders',
+                      style: const TextStyle(fontWeight: FontWeight.bold)),
+                  Align(
+                      child: Icon(
+                    Icons.watch_later_outlined,
+                    color: Color(0xFFEF5350),
+                  ))
+                ],
+              ),
+            ),
+          ],
+        )),
+      )),
+    );
   }
 }

@@ -1,5 +1,4 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, avoid_dynamic_calls, omit_local_variable_types, lines_longer_than_80_chars, must_be_immutable, prefer_const_literals_to_create_immutables
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, avoid_dynamic_calls, omit_local_variable_types, lines_longer_than_80_chars, must_be_immutable, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 //import 'package:flutter_bloc/flutter_bloc.dart';

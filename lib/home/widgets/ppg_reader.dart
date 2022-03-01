@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_import,, always_use_package_imports,,, prefer_if_elements_to_conditional_expressions, prefer_const_constructors, prefer_interpolation_to_compose_strings, prefer_single_quotes, type_annotate_public_apis, always_declare_return_types, sized_box_for_whitespace, lines_longer_than_80_chars, use_key_in_widget_constructors, sort_constructors_first
+// ignore_for_file: unnecessary_import,, always_use_package_imports,,, prefer_if_elements_to_conditional_expressions, prefer_const_constructors, prefer_interpolation_to_compose_strings, prefer_single_quotes, type_annotate_public_apis, always_declare_return_types, sized_box_for_whitespace, lines_longer_than_80_chars, use_key_in_widget_constructors, sort_constructors_first, avoid_void_async, omit_local_variable_types, prefer_final_locals
 
 import 'dart:async';
 
@@ -131,45 +131,45 @@ class PPGPageView extends State<PPGPage> {
         children: [
           isBPMEnabled
               ? dialog = HeartBPMDialog(
-            context: context,
-            onRawData: (value) {
-              setState(() {
-                if (data.length == 100) data.removeAt(0);
-                data.add(value);
-              });
-            },
-            onBPM: (value) {},
-            child: const Text('Keep finger on the camera'),
-          )
+                  context: context,
+                  onRawData: (value) {
+                    setState(() {
+                      if (data.length == 100) data.removeAt(0);
+                      data.add(value);
+                    });
+                  },
+                  onBPM: (value) {},
+                  child: const Text('Keep finger on the camera'),
+                )
               : SizedBox(),
           isBPMEnabled
               ? Container(
-            decoration: BoxDecoration(border: Border.all()),
-            height: 150,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                (_counter > 0)
-                    ? Text('')
-                    : Text(
-                  //currentValue.toString(),
-                  'BPM: ' + _bpm.toString(),
-                  style: TextStyle(
-                    color: Colors.green,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 36,
-                  ),
-                ),
-                Text(
-                  'Time left (sec): $_counter',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24,
-                  ),
-                ),
-              ],
-            ), // BPMChart(data),
-          )
+                  decoration: BoxDecoration(border: Border.all()),
+                  height: 150,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      (_counter > 0)
+                          ? Text('')
+                          : Text(
+                              //currentValue.toString(),
+                              'BPM: ' + _bpm.toString(),
+                              style: TextStyle(
+                                color: Colors.green,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 36,
+                              ),
+                            ),
+                      Text(
+                        'Time left (sec): $_counter',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                        ),
+                      ),
+                    ],
+                  ), // BPMChart(data),
+                )
               : SizedBox(),
           Container(
             alignment: Alignment.bottomCenter,
@@ -274,13 +274,13 @@ class Page1 extends StatelessWidget {
           )
         ],*/
         // Logout iconButton
-          actions: [
-            IconButton(
-              key: const Key('homePage_logout_iconButton'),
-              icon: const Icon(Icons.exit_to_app),
-              onPressed: () => context.read<AppBloc>().add(AppLogoutRequested()),
-            )
-          ],
+        actions: [
+          IconButton(
+            key: const Key('homePage_logout_iconButton'),
+            icon: const Icon(Icons.exit_to_app),
+            onPressed: () => context.read<AppBloc>().add(AppLogoutRequested()),
+          )
+        ],
 
         automaticallyImplyLeading: false,
       ),
@@ -288,18 +288,18 @@ class Page1 extends StatelessWidget {
         onPressed: () {
           // Add your onPressed code here!
           Navigator.of(
-              context) // when button is pressed -> open camera (goes to CameraAppTest class)
+                  context) // when button is pressed -> open camera (goes to CameraAppTest class)
               .push<void>(MaterialPageRoute(
-              builder: (context) => const CameraAppTest()));
+                  builder: (context) => const CameraAppTest()));
         },
-        label: const Text('New Reading',
-            style: TextStyle(color: Colors.white)),
-        icon: const Icon(Icons.add, color: Colors.white,),
+        label: const Text('New Reading', style: TextStyle(color: Colors.white)),
+        icon: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
         backgroundColor: theme.primaryColor,
       ),
-      floatingActionButtonLocation:
-      FloatingActionButtonLocation.centerFloat,
-
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: Column(
         children: [
           Container(
