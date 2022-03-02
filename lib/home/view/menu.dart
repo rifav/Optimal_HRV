@@ -15,7 +15,7 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
-  int _currentIndex = 0;
+  int _currentIndex = 1;
   final screens = [
     //EducationPage(), // Education
     Page2(), // Data Trends
