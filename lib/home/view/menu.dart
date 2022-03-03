@@ -4,7 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:optimal_hrv_bloc/home/view/biofeedback.dart';
 import 'package:optimal_hrv_bloc/home/view/homeMenu.dart';
-import 'package:optimal_hrv_bloc/home/view/info.dart';
+import 'package:optimal_hrv_bloc/home/view/profile/profile.dart';
 import 'package:optimal_hrv_bloc/home/widgets/widgets.dart';
 
 class Menu extends StatefulWidget {

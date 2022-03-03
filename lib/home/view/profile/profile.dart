@@ -69,9 +69,9 @@ class ProfileView extends StatelessWidget {
             _changeAvatarButton(),
             SizedBox(height: 30),
             _userNameTitle(),
-            _emailTitle(),
             _genderTitle(),
             _dobTitle(),
+            _emailTitle(),
             _saveProfileChangesButton(),
           ],
         ),
@@ -97,6 +97,10 @@ class ProfileView extends StatelessWidget {
   Widget _userNameTitle() {
     return ListTile(
       tileColor: Colors.white,
+      trailing: IconButton(
+        icon: Icon(Icons.edit_outlined),
+        onPressed: () => currentDate,
+      ),
       leading: Icon(Icons.person_outline),
       title: Text('Name'),
     );
@@ -137,6 +141,7 @@ class ProfileView extends StatelessWidget {
   Widget _saveProfileChangesButton() {
     return ElevatedButton(
       onPressed: () {},
+      style: ElevatedButton.styleFrom(primary: theme.primaryColor),
       child: Text('Save Changes'),
     );
   }
