@@ -9,9 +9,11 @@ import 'package:optimal_hrv_bloc/home/widgets/widgets.dart';
 
 class Menu extends StatefulWidget {
   const Menu({Key? key}) : super(key: key);
-  static Page page() => const MaterialPage<void>(child: Menu());
+
   @override
   _MenuState createState() => _MenuState();
+
+  static Page page() => const MaterialPage<void>(child: Menu());
 }
 
 class _MenuState extends State<Menu> {

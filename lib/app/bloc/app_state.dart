@@ -21,4 +21,6 @@ class AppState extends Equatable {
 
   @override
   List<Object> get props => [status, user];
+
+  String? get email => user.email;
 }

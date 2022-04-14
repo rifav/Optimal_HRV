@@ -3,6 +3,8 @@ import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:optimal_hrv_bloc/app/app.dart';
+import 'package:optimal_hrv_bloc/repositories/data_repo.dart';
+import 'package:optimal_hrv_bloc/repositories/storage_repo.dart';
 import 'package:optimal_hrv_bloc/theme.dart';
 
 class App extends StatelessWidget {
@@ -16,8 +18,12 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider.value(
-      value: _authenticationRepository,
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider(create: (context) => DataRepo()),
+        RepositoryProvider(create: (context) => StorageRepo()),
+        RepositoryProvider.value(value: _authenticationRepository),
+      ],
       child: BlocProvider(
         create: (_) => AppBloc(
           authenticationRepository: _authenticationRepository,

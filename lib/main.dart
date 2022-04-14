@@ -10,11 +10,16 @@ Future<void> main() async {
   await Firebase.initializeApp();
   final authenticationRepository = AuthenticationRepository();
   await authenticationRepository.user.first;
+  ///////////////////////
   BlocOverrides.runZoned(
     () => runApp(App(authenticationRepository: authenticationRepository)),
     blocObserver: AppBlocObserver(),
   );
+  ///////////////////////
+  //Preferred orientation
+  //////////////////////
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
+  //////////////////////
 }

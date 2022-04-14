@@ -1,10 +1,14 @@
 // ignore_for_file: sort_constructors_first
+import 'package:image_picker/image_picker.dart';
 
 abstract class ProfileEvent {}
 
 class ChangeAvatarRequest extends ProfileEvent {}
 
-class OpenImagePicker extends ProfileEvent {}
+class OpenImagePicker extends ProfileEvent {
+  final ImageSource imageSource;
+  OpenImagePicker({required this.imageSource});
+}
 
 class ProvideImagePath extends ProfileEvent {
   final String avatarPath;
@@ -22,7 +26,7 @@ class ProfileGenderChanged extends ProfileEvent {
 }
 
 class ProfileDobChanged extends ProfileEvent {
-  final DateTime dateOfBirth;
+  final String dateOfBirth;
   ProfileDobChanged({required this.dateOfBirth});
 }
 

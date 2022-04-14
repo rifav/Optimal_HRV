@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:formz/formz.dart';
 import 'package:optimal_hrv_bloc/login/login.dart';
+import 'package:optimal_hrv_bloc/recover_password/recover_password.dart';
 import 'package:optimal_hrv_bloc/sign_up/sign_up.dart';
 
 class LoginForm extends StatelessWidget {
@@ -38,6 +39,8 @@ class LoginForm extends StatelessWidget {
               _PasswordInput(),
               const SizedBox(height: 8),
               _LoginButton(),
+              //const SizedBox(height: 8),
+              _ForgotPassword(),
               const SizedBox(height: 8),
               _GoogleLoginButton(),
               const SizedBox(height: 4),
@@ -115,6 +118,22 @@ class _LoginButton extends StatelessWidget {
                 child: const Text('LOGIN'),
               );
       },
+    );
+  }
+}
+
+class _ForgotPassword extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return TextButton(
+      key: const Key('loginForm_forgotPassword_flatButton'),
+      onPressed: () =>
+          Navigator.of(context).push<void>(RecoverPasswordPage.route()),
+      child: Text(
+        'FORGOT PASSWORD',
+        style: TextStyle(color: theme.primaryColor),
+      ),
     );
   }
 }
