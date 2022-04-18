@@ -5,6 +5,10 @@ import 'package:optimal_hrv_bloc/home/home.dart';
 import 'package:optimal_hrv_bloc/home/view/biofeedback.dart';
 import 'package:optimal_hrv_bloc/home/view/definitions.dart';
 import 'package:optimal_hrv_bloc/home/view/education.dart';
+import 'package:optimal_hrv_bloc/home/view/mindfulness.dart';
+import 'package:optimal_hrv_bloc/home/view/reminders.dart';
+import 'package:optimal_hrv_bloc/home/view/youtube_videos.dart';
+import 'package:optimal_hrv_bloc/home/view/onboarding.dart';
 import 'package:optimal_hrv_bloc/theme.dart';
 
 class Page2 extends StatelessWidget {
@@ -60,6 +64,15 @@ class Page2 extends StatelessWidget {
                         color: Colors.white, border: Border.all( color: const Color(0xFFEEEEEE), width: 2,)
                     ),
                     height: 65, width: 325,
+                    padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                    child: InkWell(
+                      onTap: (){
+                        //Navigator.pop(context, true);
+                        Navigator.of(
+                            context) // when button is pressed -> open camera (goes to CameraAppTest class)
+                            .push<void>(MaterialPageRoute(
+                            builder: (context) => ManualSlide()));
+                      },
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -72,6 +85,7 @@ class Page2 extends StatelessWidget {
                       ],
                     ),
                   ),
+                  ),
                   const SizedBox(height: 12),
                   // Mindfulness
                   Ink(
@@ -80,7 +94,28 @@ class Page2 extends StatelessWidget {
                     ),
                     height: 65, width: 325,
                     padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-                    child: Row(
+                    child: InkWell(
+                      onTap: (){
+                        //Navigator.pop(context, true);
+                        Navigator.of(
+                            context) // when button is pressed -> open camera (goes to CameraAppTest class)
+                            .push<void>(MaterialPageRoute(
+                            builder: (context) => MindfulnessPage()));
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: const [
+                          Text('Mindfulness', style: const TextStyle(fontWeight: FontWeight.bold)),
+                          Align( // wb_incandescent
+                              child: Icon(Icons.lightbulb, color: const Color(0xFFEF9A9A),
+                              )
+                          )
+                        ],
+                      ),
+                    ),
+
+/*                    child: Row(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: const [
@@ -90,7 +125,7 @@ class Page2 extends StatelessWidget {
                             )
                         )
                       ],
-                    ),
+                    ),*/
                   ),
                   const SizedBox(height: 12),
                   // Biofeedback
@@ -189,6 +224,14 @@ class Page2 extends StatelessWidget {
                     ),
                     height: 65, width: 325,
                     padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                    child: InkWell(
+                      onTap: (){
+                        //Navigator.pop(context, true);
+                        Navigator.of(
+                            context) // when button is pressed -> open camera (goes to CameraAppTest class)
+                            .push<void>(MaterialPageRoute(
+                            builder: (context) =>  YouTubePage()));
+                      },
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -201,6 +244,7 @@ class Page2 extends StatelessWidget {
                       ],
                     ),
                   ),
+                  ),
 
                   const SizedBox(height: 12),
                   // Set Reminders
@@ -210,6 +254,16 @@ class Page2 extends StatelessWidget {
                     ),
                     height: 65, width: 325,
                     padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+
+
+                    child: InkWell(
+                      onTap: (){
+                        //Navigator.pop(context, true);
+                        Navigator.of(
+                            context) // when button is pressed -> open camera (goes to CameraAppTest class)
+                            .push<void>(MaterialPageRoute(
+                            builder: (context) =>  Reminders()));
+                      },
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -221,6 +275,7 @@ class Page2 extends StatelessWidget {
                         )
                       ],
                     ),
+                    ),// here
                   ),
                 ],
               )

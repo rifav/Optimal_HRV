@@ -25,7 +25,7 @@ class CameraAppTest extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: const Text('PPG Reader'),
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
         backgroundColor: theme.primaryColor,
       ),
       body: Container(
@@ -176,6 +176,7 @@ class PPGPageView extends State<PPGPage> {
             child: ElevatedButton.icon(
               icon: Icon(Icons.favorite_border_rounded),
               label: Text(isBPMEnabled ? 'Stop' : 'Start Measurement'),
+              style: ElevatedButton.styleFrom(primary: theme.primaryColor,),
               onPressed: () => setState(() {
                 if (isBPMEnabled) {
                   if (_counter != 0) {
@@ -282,7 +283,7 @@ class Page1 extends StatelessWidget {
             )
           ],
 
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
