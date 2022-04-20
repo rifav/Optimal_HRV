@@ -1,8 +1,8 @@
 // ignore_for_file: use_key_in_widget_constructors
 
+import 'package:accordion/accordion.dart';
 import 'package:flutter/material.dart';
 import 'package:optimal_hrv_bloc/theme.dart';
-import 'package:accordion/accordion.dart';
 
 class Definitions extends StatelessWidget {
   final _headerStyle = const TextStyle(

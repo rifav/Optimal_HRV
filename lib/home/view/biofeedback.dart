@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:optimal_hrv_bloc/theme.dart';
 import 'package:accordion/accordion.dart';
 
+import 'definitions.dart';
+
 class FeedbackPage extends StatelessWidget {
   final _headerStyle = TextStyle(
       color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold);
@@ -175,7 +177,7 @@ class FeedbackPage extends StatelessWidget {
                   fixedSize: const Size(208, 43),
                 ),
                 label: Text(
-                    "Continue",
+                    "Learn More",
                     style: const TextStyle(
                         fontSize: 16,
                         color: Colors.white)),
@@ -183,7 +185,12 @@ class FeedbackPage extends StatelessWidget {
                   Icons.arrow_back,
                   color: Colors.white,
                 ),
-                onPressed: () {  },
+                onPressed: () {
+                  Navigator.of(
+                      context) // when button is pressed -> open camera (goes to CameraAppTest class)
+                      .push<void>(MaterialPageRoute(
+                      builder: (context) =>  Definitions()));
+                },
               ),
             ),
             contentHorizontalPadding: 20,

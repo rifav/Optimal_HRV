@@ -7,6 +7,7 @@ import 'package:optimal_hrv_bloc/home/view/homeMenu.dart';
 import 'package:optimal_hrv_bloc/home/view/education.dart';
 import 'package:optimal_hrv_bloc/home/view/info.dart';
 import 'package:optimal_hrv_bloc/home/widgets/widgets.dart';
+import 'package:optimal_hrv_bloc/theme.dart';
 
 class Menu extends StatefulWidget {
   const Menu({Key? key}) : super(key: key);
