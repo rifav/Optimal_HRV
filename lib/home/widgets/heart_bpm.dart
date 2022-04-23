@@ -1,14 +1,21 @@
 //library heart_bpm;
 
-// ignore_for_file: use_key_in_widget_constructors, prefer_single_quotes, curly_braces_in_flow_control_structures, avoid_void_async, omit_local_variable_types, prefer_final_locals, unawaited_futures, duplicate_ignore, avoid_print, use_rethrow_when_possible, only_throw_errors, cascade_invocations, avoid_function_literals_in_foreach_calls, prefer_const_constructors, unnecessary_null_comparison, prefer_if_null_operators, prefer_if_elements_to_conditional_expressions, sort_constructors_first, lines_longer_than_80_chars, comment_references
+// ignore_for_file: avoid_print
+
+import 'dart:math';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'var.dart' as globals;
+//import 'package:stats/stats.dart';
+import 'package:collection/collection.dart';
+
 
 int currentValue = 0;
-
+int currentValueHRV = 0;
 /// Class to store one sample data point
 class SensorValue {
+
   /// timestamp of datapoint
   final DateTime time;
 
@@ -18,8 +25,7 @@ class SensorValue {
   SensorValue({required this.time, required this.value});
 
   /// Returns JSON mapped data point
-  Map<String, dynamic> toJSON() =>
-      <String, dynamic>{'time': time, 'value': value};
+  Map<String, dynamic> toJSON() => {'time': time, 'value': value};
 
   /// Map a list of data samples to a JSON formatted array.
   ///
@@ -36,6 +42,7 @@ class SensorValue {
 /// present below the skin of the fingertips.
 // ignore: must_be_immutable
 class HeartBPMDialog extends StatefulWidget {
+  
   /// Callback used to notify the caller of updated BPM measurement
   ///
   /// Should be non-blocking as it can affect
@@ -71,8 +78,7 @@ class HeartBPMDialog extends StatefulWidget {
   /// over time. These variations are due to the blood flow in the arteries
   /// present below the skin of the fingertips.
   ///
-  /// This is a [Dialog] widget and hence needs to be
-  ///  displayer using [showDialog]
+  /// This is a [Dialog] widget and hence needs to be displayer using [showDialog]
   /// function. For example:
   /// ```
   /// await showDialog(
@@ -82,7 +88,7 @@ class HeartBPMDialog extends StatefulWidget {
   ///   ),
   /// );
   /// ```
-  HeartBPMDialog({
+   HeartBPMDialog({
     //Key key,
     required this.context,
     this.sampleDelay = 2000 ~/ 30,
@@ -115,7 +121,7 @@ class HeartBPMDialog extends StatefulWidget {
 
 class _HeartBPPView extends State<HeartBPMDialog> {
   /// Camera controller
-
+  
   late CameraController _controller;
 
   /// Used to set sampling rate
@@ -165,9 +171,8 @@ class _HeartBPPView extends State<HeartBPMDialog> {
       await _controller.initialize();
 
       // 4. set torch to ON and start image stream
-      // ignore: unawaited_futures,
-      Future<void>.delayed(const Duration(milliseconds: 500))
-          .then((dynamic value) => _controller.setFlashMode(FlashMode.torch));
+      Future.delayed(Duration(milliseconds: 500))
+          .then((value) => _controller.setFlashMode(FlashMode.torch));
 
       // 5. register image streaming callback
       _controller.startImageStream((image) {
@@ -198,19 +203,23 @@ class _HeartBPPView extends State<HeartBPMDialog> {
     // });
 
     // get the average value of the image
-    double _avg =
+     globals.avg =
         image.planes.first.bytes.reduce((value, element) => value + element) /
             image.planes.first.bytes.length;
+    
+    //print("HELLO " + globals.avg.toString());
+    
+    
 
     measureWindow.removeAt(0);
-    measureWindow.add(SensorValue(time: DateTime.now(), value: _avg));
+    measureWindow.add(SensorValue(time: DateTime.now(), value: globals.avg));
 
-    _smoothBPM(_avg).then((value) {
+    _smoothBPM(globals.avg).then((value) {
       widget.onRawData(
         // call the provided function with the new data sample
         SensorValue(
           time: DateTime.now(),
-          value: _avg,
+          value: globals.avg,
         ),
       );
 
@@ -225,22 +234,32 @@ class _HeartBPPView extends State<HeartBPMDialog> {
   }
 
   /// Smooth the raw measurements using Exponential averaging
-  /// the scaling factor {alpha} is used to compute exponential moving average of the
+  /// the scaling factor [alpha] is used to compute exponential moving average of the
   /// realtime data using the formula:
   /// ```
   /// $y_n = alpha * x_n + (1 - alpha) * y_{n-1}$
   /// ```
   Future<int> _smoothBPM(double newValue) async {
-    double maxVal = 0, _avg = 0;
+    double maxVal = 0;
+     globals.avg = 0;
 
     measureWindow.forEach((element) {
-      _avg += element.value / measureWindow.length;
-      if (element.value > maxVal) maxVal = element.value.toDouble();
+      globals.avg += element.value / measureWindow.length;
+      if (element.value > maxVal) maxVal =  element.value.toDouble();
     });
 
-    double _threshold = (maxVal + _avg) / 2;
+    //int size = measureWindow.length;
+
+    double _threshold = (maxVal + globals.avg) / 2;
     int _counter = 0, previousTimestamp = 0;
     double _tempBPM = 0;
+    // ignore: deprecated_member_use
+    //List<double> timeElapsed = <double>[];
+    var list = List.empty(growable: true);
+    list.clear();
+    //var timeElapsed = new List()
+    //timeElapsed.length = size;
+
     for (int i = 1; i < measureWindow.length; i++) {
       // find rising edge
       if (measureWindow[i - 1].value < _threshold &&
@@ -250,16 +269,31 @@ class _HeartBPPView extends State<HeartBPMDialog> {
           _tempBPM += 60000 /
               (measureWindow[i].time.millisecondsSinceEpoch -
                   previousTimestamp); // convert to per minute
+          globals.temp = _tempBPM; 
+          list.add(measureWindow[i].time.millisecondsSinceEpoch - previousTimestamp);
+          double sum = 0;
+          double std = 0;
+          list.forEach((element) => sum+=element);
+          double mean = sum/list.length;
+          list.forEach((element) => std += pow(element - mean, 2));
+          
+          double square = std/list.length;
+          globals.hrv = sqrt(square);
         }
+        //print("HELLO: " + globals.hrv.toString());
         previousTimestamp = measureWindow[i].time.millisecondsSinceEpoch;
       }
     }
 
     if (_counter > 0) {
       _tempBPM /= _counter;
+      globals.hrv /= _counter;
       _tempBPM = (1 - widget.alpha) * currentValue + widget.alpha * _tempBPM;
+      globals.hrv = (1 - widget.alpha) * currentValueHRV + widget.alpha * globals.hrv;
       setState(() {
         currentValue = _tempBPM.toInt();
+        currentValueHRV = globals.hrv.toInt();
+        print("HELLO: " + currentValueHRV.toString());
         // _bpm = _tempBPM;
       });
       widget.onBPM(currentValue);
@@ -267,6 +301,8 @@ class _HeartBPPView extends State<HeartBPMDialog> {
 
     // double newOut = widget.alpha * newValue + (1 - widget.alpha) * _pastBPM;
     // _pastBPM = newOut;
+    // ignore: avoid_print
+    //print("HRV: " + currentValueHRV.toString());
     return currentValue;
   }
 
