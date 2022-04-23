@@ -11,14 +11,14 @@ class ManualSlide extends StatefulWidget {
 
 class OnboardingPage extends State<ManualSlide> {
   CarouselController carouselController = new CarouselController();
-  bool isChecked = false;
 
-   Map<String, bool?> values = {
-    'Watch using the Optimal HRV App video': false,
-    'Schedule reminders for morning reading': false,
-    'Take your first morning reading': false,
-  };
+  bool firstvalue = false;
+  bool secondvalue = false;
 
+  final headerStyle =  TextStyle(
+      color: Colors.grey[800],
+      fontWeight: FontWeight.bold,
+      fontSize: 20);
 
   @override
   Widget build(BuildContext context) {
@@ -33,146 +33,400 @@ class OnboardingPage extends State<ManualSlide> {
         children: [
           CarouselSlider(
             items: [
-              //1st page of Slider
-/*              Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children:  <Widget>[
-                    Text('Day 1', style: TextStyle(fontSize: 20)),
-                    SizedBox(height: 10),
-                    Expanded(child:
-                    ListView(
-                      children: values.keys.map((String key) {
-                       return CheckboxListTile(
-                          title: new Text(key),
-                          value: values[key],
-                          onChanged: (bool? value) {
+              // first page of slider
+              Container(
+                height: 400,
+                //margin: EdgeInsets.all(6.0),
+                child: Center(
+                  child: ListView(
+                      scrollDirection: Axis.vertical,
+                      children: <Widget>[
+                        Container(
+                          height: 50,
+                          color: Colors.blueGrey.shade100,
+                          child:  Center(child: Text('Day 1', style: headerStyle)),
+                        ),
+                        CheckboxListTile(
+                          value: this.firstvalue,
+                          onChanged: (bool? value){
                             setState(() {
-                              values[key] = value;
-                            });
+                              this.firstvalue = value!;
+                            }
+                            );
                           },
-                        );
-                      }).toList(),
-                    )
-                    )
-                  ]
-              ), */
-
-/*              SingleChildScrollView(
-              child: Column(
-                children: [
-                  const Center(
-                    child: Text('Day 1', style: TextStyle(fontSize: 20)),
-                  ),
-
-                  const SizedBox(height: 10),
-                  const Divider(),
-                  const SizedBox(height: 10),
-                  Column(//ListView(
-                    //shrinkWrap: true,
-                    children: values.keys.map((String key) {
-                      return CheckboxListTile(
-                        controlAffinity: ListTileControlAffinity.leading,
-                        title: Text(key),
-                        value: values[key],
-                        onChanged: (bool? value) {
-                          setState(() {
-                            values[key] = value;
-                          });
-                        },
-                      );
-                    }).toList(),
-                  )
-                ],
-              ),
-              ),*/
-              SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.all(0),
-                  child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                    Text('Day 1', style: TextStyle(fontSize: 20)),
-                    const SizedBox(height: 10),
-                    const Divider(),
-                    const SizedBox(height: 10),
-
-                    Column(
-                      children: values.keys.map((String key) {
-                        return CheckboxListTile(
                           controlAffinity: ListTileControlAffinity.leading,
-                          activeColor: theme.primaryColor,
-                          title: Text(key),
-                          value: values[key],
-                          onChanged: (bool? value) {
+                          title: const Text('Watch using the Optimal HRV App Video'),
+                        ),
+
+                        CheckboxListTile(
+                          value: this.secondvalue,
+                          onChanged: (bool? value){
                             setState(() {
-                              values[key] = value;
-                            });
+                              this.secondvalue = value!;
+                            }
+                            );
                           },
-                        );
+                          controlAffinity: ListTileControlAffinity.leading,
+                          title: const Text('Schedule reminders for morning reading'),
+                        ),
 
-                      }).toList(),
-                    )
+                        CheckboxListTile(
+                          value: this.secondvalue,
+                          onChanged: (bool? value){
+                            setState(() {
+                              this.secondvalue = value!;
+                            }
+                            );
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,
+                          title: const Text('Take our first morning reading'),
+                        ),
 
-                    ],
-
-                ),
+                      ]
+                  ),
+                ),//
               ),
-              ),
-
-
 
               //2nd page of Slider
               Container(
-                margin: EdgeInsets.all(6.0),
-                child: const Text('Day 2',
-                    style: TextStyle(fontSize: 20)),
+                height: 400,
+                //margin: EdgeInsets.all(6.0),
+                child: Center(
+                child: ListView(
+                    children: <Widget>[
+                      Container(
+                        height: 50,
+                        color: Colors.blueGrey.shade100,
+                        child: Center(child: Text('Day 2', style: headerStyle)),
+                      ),
+                      CheckboxListTile(
+                          value: this.firstvalue,
+                          onChanged: (bool? value){
+                            setState(() {
+                              this.firstvalue = value!;
+                            }
+                            );
+                          },
+                        controlAffinity: ListTileControlAffinity.leading,
+                        title: const Text('Take a morning reading'),
+                      ),
+
+                      CheckboxListTile(
+                        value: this.secondvalue,
+                        onChanged: (bool? value){
+                          setState(() {
+                            this.secondvalue = value!;
+                          }
+                          );
+                        },
+                        controlAffinity: ListTileControlAffinity.leading,
+                        title: const Text('Watch Low and Slow breathing video'),
+                      ),
+
+                      CheckboxListTile(
+                        value: this.secondvalue,
+                        onChanged: (bool? value){
+                          setState(() {
+                            this.secondvalue = value!;
+                          }
+                          );
+                        },
+                        controlAffinity: ListTileControlAffinity.leading,
+                        title: const Text('Practice a 2-minute low and slow breathing '
+                            'exercise, no pacer'),
+                      ),
+
+                    ]
+                ),
+                ),//
               ),
 
               //3rd page of Slider
               Container(
-                margin: EdgeInsets.all(6.0),
-                child: const Text('Day 3',
-                    style: TextStyle(fontSize: 20)),
+                height: 400,
+                //margin: EdgeInsets.all(6.0),
+                child: Center(
+                  child: ListView(
+                      scrollDirection: Axis.vertical,
+                      children: <Widget>[
+                        Container(
+                          height: 50,
+                          color: Colors.blueGrey.shade100,
+                          child: Center(child: Text('Day 3', style: headerStyle)),
+                        ),
+                        CheckboxListTile(
+                          value: this.firstvalue,
+                          onChanged: (bool? value){
+                            setState(() {
+                              this.firstvalue = value!;
+                            }
+                            );
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,
+                          title: const Text('Take morning reading'),
+                        ),
+
+                        CheckboxListTile(
+                          value: this.secondvalue,
+                          onChanged: (bool? value){
+                            setState(() {
+                              this.secondvalue = value!;
+                            }
+                            );
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,
+                          title: const Text('Watch video -  What is HRV?'),
+                        ),
+
+                        CheckboxListTile(
+                          value: this.secondvalue,
+                          onChanged: (bool? value){
+                            setState(() {
+                              this.secondvalue = value!;
+                            }
+                            );
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,
+                          title: const Text('Practice a 4-minute low and slow breathing '
+                              'exercise, no pacer'),
+                        ),
+
+                      ]
+                  ),
+                ),//
               ),
 
               //4th page of Slider
               Container(
-                margin: EdgeInsets.all(6.0),
-                child: const Text('Day 4',
-                    style: TextStyle(fontSize: 20)),
+                height: 400,
+                //margin: EdgeInsets.all(6.0),
+                child: Center(
+                  child: ListView(
+                      scrollDirection: Axis.vertical,
+                      children: <Widget>[
+                        Container(
+                          height: 50,
+                          color: Colors.blueGrey.shade100,
+                          child: Center(child: Text('Day 4', style: headerStyle)),
+                        ),
+                        CheckboxListTile(
+                          value: this.firstvalue,
+                          onChanged: (bool? value){
+                            setState(() {
+                              this.firstvalue = value!;
+                            }
+                            );
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,
+                          title: const Text('Take morning reading'),
+                        ),
+
+                        CheckboxListTile(
+                          value: this.secondvalue,
+                          onChanged: (bool? value){
+                            setState(() {
+                              this.secondvalue = value!;
+                            }
+                            );
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,
+                          title: const Text('Watch video -  Why is HRV Important?'),
+                        ),
+
+                        CheckboxListTile(
+                          value: this.secondvalue,
+                          onChanged: (bool? value){
+                            setState(() {
+                              this.secondvalue = value!;
+                            }
+                            );
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,
+                          title: const Text('Practice a 6-minute low and slow breathing '
+                              'exercise, using pacer at 6 breaths per minute'),
+                        ),
+
+                      ]
+                  ),
+                ),//
               ),
 
               //5th page of Slider
               Container(
-                margin: EdgeInsets.all(6.0),
-                child: const Text('Day 5',
-                    style: TextStyle(fontSize: 20)),
+                height: 400,
+                //margin: EdgeInsets.all(6.0),
+                child: Center(
+                  child: ListView(
+                      scrollDirection: Axis.vertical,
+                      children: <Widget>[
+                        Container(
+                          height: 50,
+                          color: Colors.blueGrey.shade100,
+                          child: Center(child: Text('Day 5', style: headerStyle)),
+                        ),
+                        CheckboxListTile(
+                          value: this.firstvalue,
+                          onChanged: (bool? value){
+                            setState(() {
+                              this.firstvalue = value!;
+                            }
+                            );
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,
+                          title: const Text('Take morning reading'),
+                        ),
+
+                        CheckboxListTile(
+                          value: this.secondvalue,
+                          onChanged: (bool? value){
+                            setState(() {
+                              this.secondvalue = value!;
+                            }
+                            );
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,
+                          title: const Text('Watch video -  How do I Improve Short-term HRV?'),
+                        ),
+
+                        CheckboxListTile(
+                          value: this.secondvalue,
+                          onChanged: (bool? value){
+                            setState(() {
+                              this.secondvalue = value!;
+                            }
+                            );
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,
+                          title: const Text('Practice an 8-minute low and slow breathing '
+                              'exercise, using pacer at 6 breaths per minute'),
+                        ),
+
+                      ]
+                  ),
+                ),//
               ),
 
               //6th page of Slider
               Container(
-                margin: EdgeInsets.all(6.0),
-                child: const Text('Day 6',
-                    style: TextStyle(fontSize: 20)),
+                height: 400,
+                //margin: EdgeInsets.all(6.0),
+                child: Center(
+                  child: ListView(
+                      scrollDirection: Axis.vertical,
+                      children: <Widget>[
+                        Container(
+                          height: 50,
+                          color: Colors.blueGrey.shade100,
+                          child: Center(child: Text('Day 6', style: headerStyle)),
+                        ),
+                        CheckboxListTile(
+                          value: this.firstvalue,
+                          onChanged: (bool? value){
+                            setState(() {
+                              this.firstvalue = value!;
+                            }
+                            );
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,
+                          title: const Text('Take morning reading'),
+                        ),
+
+                        CheckboxListTile(
+                          value: this.secondvalue,
+                          onChanged: (bool? value){
+                            setState(() {
+                              this.secondvalue = value!;
+                            }
+                            );
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,
+                          title: const Text('Watch Resonance Breathing video'),
+                        ),
+
+                        CheckboxListTile(
+                          value: this.secondvalue,
+                          onChanged: (bool? value){
+                            setState(() {
+                              this.secondvalue = value!;
+                            }
+                            );
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,
+                          title: const Text('Complete Resonance Frequency Training'),
+                        ),
+
+                      ]
+                  ),
+                ),//
               ),
 
               //7th page of Slider
               Container(
-                margin: EdgeInsets.all(6.0),
-                child: const Text('Day 7',
-                    style: TextStyle(fontSize: 20)),
+                height: 400,
+                //margin: EdgeInsets.all(6.0),
+                child: Center(
+                  child: ListView(
+                      scrollDirection: Axis.vertical,
+                      children: <Widget>[
+                        Container(
+                          height: 50,
+                          color: Colors.blueGrey.shade100,
+                          child: Center(child: Text('Day 7', style: headerStyle)),
+                        ),
+                        CheckboxListTile(
+                          value: this.firstvalue,
+                          onChanged: (bool? value){
+                            setState(() {
+                              this.firstvalue = value!;
+                            }
+                            );
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,
+                          title: const Text('Take morning reading'),
+                        ),
+
+                        CheckboxListTile(
+                          value: this.secondvalue,
+                          onChanged: (bool? value){
+                            setState(() {
+                              this.secondvalue = value!;
+                            }
+                            );
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,
+                          title: const Text('Watch video -  How do I Improve Long-term HRV?'),
+                        ),
+
+                        CheckboxListTile(
+                          value: this.secondvalue,
+                          onChanged: (bool? value){
+                            setState(() {
+                              this.secondvalue = value!;
+                            }
+                            );
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,
+                          title: const Text('Practice 10-minute of HRV breathing'
+                              'at Resonance Frequency'),
+                        ),
+
+                      ]
+                  ),
+                ),//
               ),
 
             ],
             carouselController: carouselController,
             //Slider Container properties
             options: CarouselOptions(
-              height: 180.0,
+              height: 250.0,
               //enlargeCenterPage: true,
               //autoPlay: true,
               aspectRatio: 16 / 9,
               //autoPlayCurve: Curves.fastOutSlowIn,
-              enableInfiniteScroll: false,
+              enableInfiniteScroll: true,
               //autoPlayAnimationDuration: Duration(milliseconds: 800),
-              viewportFraction: 0.8,
+              viewportFraction: 1.0,
             ),
           ),
 

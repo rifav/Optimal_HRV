@@ -279,30 +279,29 @@ class _DateTimePickerState extends State<DateTimePicker> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            Container(
-                width: 300,
+            Padding(
+                //width: 300,
+                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                 child: TextField(
-                  autocorrect: true,
                   decoration: const InputDecoration(
-                    hintText: "Title",
+                    hintText: 'Title',
                     hintStyle: TextStyle(
                         fontWeight: FontWeight.w300, color: Colors.grey),
-                    border: InputBorder.none,
+                        border: OutlineInputBorder(),
                   ),
                   onChanged: (text) {
                     value = text;
                   },
                 )
             ),
-            Container(
-                width: 300,
+            Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 1),
                 child: TextField(
-                  autocorrect: true,
-                  decoration: InputDecoration(
-                    hintText: "Notes",
+                  decoration: const InputDecoration(
+                    hintText: 'Notes',
                     hintStyle: TextStyle(
                         fontWeight: FontWeight.w300, color: Colors.grey),
-                    border: InputBorder.none,
+                    border: OutlineInputBorder(),
                   ),
                   onChanged: (text) {
                     value = text;
@@ -312,8 +311,10 @@ class _DateTimePickerState extends State<DateTimePicker> {
 
             // accordion for choosing date
             Accordion(
-              headerBackgroundColor: Color(0xFFEEEEEE),
+                headerBackgroundColor: Color(0xFFEEEEEE),
               headerPadding: EdgeInsets.symmetric(vertical: 7, horizontal: 15),
+              rightIcon: Icon(Icons.keyboard_arrow_down, color: Colors.grey),
+              maxOpenSections: 1,
               children: [
                 AccordionSection(
                   isOpen: false,
@@ -335,11 +336,11 @@ class _DateTimePickerState extends State<DateTimePicker> {
                         child: Container(
                           width: _width / 1.7,
                           height: _height / 9,
-                          margin: EdgeInsets.only(top: 30),
+                          margin: EdgeInsets.only(top: 10),
                           alignment: Alignment.center,
                           decoration: BoxDecoration(color: Colors.grey[200]),
                           child: TextFormField(
-                            style: TextStyle(fontSize: 40),
+                            style: TextStyle(fontSize: 30),
                             textAlign: TextAlign.center,
                             enabled: false,
                             keyboardType: TextInputType.text,
@@ -357,20 +358,10 @@ class _DateTimePickerState extends State<DateTimePicker> {
                       ),
                     ],
                   ),
-                  contentHorizontalPadding: 20,
+                  contentHorizontalPadding: 40,
                   contentBorderWidth: 1,
                 ),
-              ],
-            ),
 
-
-            SizedBox(height: 1,),
-
-            // accordian for time
-            Accordion(
-              headerBackgroundColor: Color(0xFFEEEEEE),
-              headerPadding: EdgeInsets.symmetric(vertical: 7, horizontal: 15),
-              children: [
                 AccordionSection(
                   isOpen: false,
                   leftIcon: Icon(Icons.schedule, color: Colors.blueAccent),
@@ -389,13 +380,13 @@ class _DateTimePickerState extends State<DateTimePicker> {
                           _selectTime(context);
                         },
                         child: Container(
-                          margin: EdgeInsets.only(top: 30),
+                          margin: EdgeInsets.only(top: 10),
                           width: _width / 1.7,
                           height: _height / 9,
                           alignment: Alignment.center,
                           decoration: BoxDecoration(color: Colors.grey[200]),
                           child: TextFormField(
-                            style: TextStyle(fontSize: 40),
+                            style: TextStyle(fontSize: 30),
                             textAlign: TextAlign.center,
                             onSaved: (String? val) {
                               _setTime = val!;
@@ -418,7 +409,6 @@ class _DateTimePickerState extends State<DateTimePicker> {
                 )
               ],
             ),
-
 
 
             Column(
